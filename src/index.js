@@ -38,31 +38,32 @@ class rijitblocks {
             "name": "Rijit Games Blocks",
             "blocks": [
                         {
-                            "opcode": "getParameterByURL",
+                            "opcode": "get_username",
                             "blockType": "reporter",
-                            "text": "Get parameter by url [parameter]",
+                            "text": "Get Username",
+                            "arguments": {}
+                        },
+                        {
+                            "opcode": "get_user_data",
+                            "blockType": "reporter",
+                            "text": "Get user data [username]",
                             "arguments": {
-                                "parameter": {
-                                    "type": "string",
-                                    "defaultValue": "api"
-                                },
+                                "type": "String",
+                                "defultValue": "mrRijit"
                             }
                         },
                 ],
         };
     }
     
-    getParameterByURL({parameter}) {
-        this.getParameterByName = (name) => {
-            var url = window.location.href;
-            name = name.replace(/[\[\]]/g, "\\$&");
-            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
-            var results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return eval(decodeURIComponent(results[2].replace(/\+/g, " ")));
-        }
-        return this.getParameterByName(parameter);
+    getUsername() {
+
+    }
+
+    getUserData({username}) {
+        return fetch("https://rijitgames.github.io/api/user" + username).then(username2 => {
+            throw username2;
+        });
     }
 
 }
