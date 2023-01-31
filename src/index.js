@@ -24,5 +24,6 @@ function getUserData(username) {
 }
 
 export{
-    embed
+    embed,
+    getUserData
 }
